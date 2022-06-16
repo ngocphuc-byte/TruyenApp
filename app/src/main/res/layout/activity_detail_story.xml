@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Detail_Story"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!--toolbar-->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue400"
+                >
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="55dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/logonhom" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/bt_switch"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp" />
+            </RelativeLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            android:background="?attr/background_color"
+            >
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       >
+
+                        <ImageView
+                            android:id="@+id/img_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="400dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="#BDE6E4"
+                            android:src="@drawable/truyen1" />
+
+                        <Button
+                            android:id="@+id/btn_detail_favorite"
+                            android:layout_width="180dp"
+                            android:layout_height="60dp"
+                            android:layout_below="@+id/img_details"
+                            android:backgroundTint="#FF0000"
+                            android:onClick="yeuthich"
+                            android:text="Yêu thích 🤍"
+                            android:textSize="18dp" />
+
+                        <Button
+                            android:id="@+id/btn_detail_like"
+                            android:layout_width="150dp"
+                            android:layout_height="60dp"
+                            android:layout_below="@+id/img_details"
+                            android:layout_alignParentEnd="true"
+                            android:backgroundTint="#2C46CC"
+                            android:enabled="true"
+                            android:onClick="like"
+                            android:text="Like ✰"
+                            android:textSize="18dp"
+                            android:visibility="visible" />
+
+                        <Button
+                            android:id="@+id/btn_detail_unlike"
+                            android:layout_width="150dp"
+                            android:layout_height="60dp"
+                            android:layout_below="@+id/img_details"
+                            android:layout_alignParentEnd="true"
+                            android:backgroundTint="#2C46CC"
+                            android:enabled="false"
+                            android:onClick="unLike"
+                            android:text="Hủy like ✰"
+                            android:textSize="18dp"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            android:id="@+id/txt_tentruyen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/btn_detail_favorite"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="monospace"
+                            android:text="DATE A FASA"
+                            android:textColor="#FB0009"
+                            android:textSize="35dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/motachu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_tentruyen"
+                            android:layout_marginTop="10dp"
+                            android:text="Mô tả"
+                            android:textColor="@color/purple_700"
+                            android:textSize="25dp"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:id="@+id/txt_mota"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/motachu"
+                            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
+                            android:textSize="25dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_mota"
+                            android:layout_marginTop="10dp"
+                            android:text="Tác Giả : "
+                            android:textColor="@color/purple_700"
+                            android:textSize="25dp"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:id="@+id/txt_tacgia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_mota"
+                            android:layout_marginLeft="100dp"
+                            android:layout_marginTop="10dp"
+                            android:text="ince asdasdsadsasdsa"
+                            android:textSize="25dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_tacgia"
+                            android:layout_marginTop="10dp"
+                            android:text="Thể Loại : "
+                            android:textColor="@color/purple_700"
+                            android:textSize="25dp"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:id="@+id/txt_theloai"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_tacgia"
+                            android:layout_marginLeft="120dp"
+                            android:layout_marginTop="10dp"
+                            android:text="ince adsasdsa"
+                            android:textSize="25dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_theloai"
+                            android:layout_marginTop="10dp"
+                            android:text="Nhóm Dịch : "
+                            android:textColor="@color/purple_700"
+                            android:textSize="25dp"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:id="@+id/txt_Nhomdich"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_theloai"
+                            android:layout_marginLeft="150dp"
+                            android:layout_marginTop="10dp"
+                            android:text="ince asda sdsa"
+                            android:textSize="25dp" />
+
+                        <TextView
+                            android:id="@+id/tt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_Nhomdich"
+                            android:layout_marginTop="10dp"
+                            android:text="Tình Trạng : "
+                            android:textColor="@color/purple_700"
+                            android:textSize="25dp"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:id="@+id/txt_TinhTrang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txt_Nhomdich"
+                            android:layout_marginLeft="150dp"
+                            android:layout_marginTop="10dp"
+                            android:text="ince asda sdsa"
+                            android:textSize="25dp" />
+
+
+                        <Button
+                            android:id="@+id/btn_detail_donate"
+                            android:layout_width="180dp"
+                            android:layout_height="60dp"
+                            android:layout_below="@+id/txt_TinhTrang"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="#b0006d"
+                            android:onClick="donate"
+                            android:text="Donate"
+                            android:textSize="20dp" />
+                        <Spinner
+                            android:id="@+id/donate"
+                            android:layout_width="180dp"
+                            android:layout_height="60dp"
+                            android:layout_below="@+id/tt"
+                            android:layout_marginTop="20dp"
+                            android:text="Donate"
+                            android:textSize="20dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:backgroundTintMode="?attr/background_color">
+
+                        <TextView
+                            android:id="@+id/danhsachchap"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:background="@color/blue400"
+                            android:padding="10dp"
+                            android:text="DANH SÁCH CHƯƠNG"
+                            android:textColor="@color/white"
+                            android:textSize="25dp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/Details_Chaplist"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:layout_below="@+id/danhsachchap" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="60dp"
+                        android:backgroundTintMode="?attr/background_color">
+
+                        <RelativeLayout
+                            android:id="@+id/binhluan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/black">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="60dp"
+                                android:padding="10dp"
+                                android:text="BÌNH LUẬN"
+                                android:textColor="@color/white"
+                                android:textSize="25dp" />
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/ic_binhluan"
+                                app:tint="@color/white" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/image_use"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_below="@+id/binhluan"
+                            android:src="@drawable/ic_use"
+                            app:tint="@color/blue400" />
+
+                        <EditText
+                            android:id="@+id/edt_chatbinhluan"
+                            android:layout_width="300dp"
+                            android:layout_height="100dp"
+                            android:layout_below="@+id/binhluan"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/image_use"
+                            android:background="@drawable/border"
+                            android:gravity="start"
+                            android:inputType="textMultiLine"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/black"
+                            android:textCursorDrawable="@color/black"
+                            android:textSize="20dp" />
+
+                        <Button
+                            android:id="@+id/gui"
+                            android:layout_width="100dp"
+                            android:layout_height="60dp"
+                            android:layout_below="@+id/edt_chatbinhluan"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="10dp"
+                            android:backgroundTint="#09771B"
+                            android:onClick="send"
+                            android:text="Gửi"
+                            android:textColor="@color/white" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/binhluan_recycleView"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:layout_below="@+id/gui"
+                            android:layout_marginTop="13dp" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

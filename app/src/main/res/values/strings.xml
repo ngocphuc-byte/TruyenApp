@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Ứng dụng đọc tryện</string>
+    <string name="nav_Home">Trang Chủ</string>
+    <string name="nav_Category">Thể Loại</string>
+    <string name="nav_Favorite">Yêu Thích</string>
+    <string name="nav_History">Lịch sử đọc truyện</string>
+    <string name="nav_Acount">Thông tin</string>
+    <string name="nav_New">Tin Tức</string>
+    <string name="nav_Logout">Đăng xuất</string>
+    <string name="nav_drawer_open"></string>
+    <string name="nav_drawer_close"></string>
+</resources>

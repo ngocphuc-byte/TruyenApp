@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTintMode="?attr/background_color">
+                        <LinearLayout
+                            android:id="@+id/linear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Chapter"
+                                android:textColor="@color/blue400"
+                                android:textSize="30dp" />
+                            <TextView
+                                android:id="@+id/ten_chapter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1"
+                                android:layout_marginLeft="7dp"
+                                android:textColor="@color/blue400"
+                                android:textSize="30dp" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/ngaycapnhat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/linear"
+                            android:layout_centerHorizontal="true"
+                            android:text="22/12/2022"
+                            android:textSize="23dp"
+                            android:textStyle="italic" />
+
+                        <TextView
+                            android:id="@+id/tieu_De"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ngaycapnhat"
+                            android:layout_centerHorizontal="true"
+                            android:text="Long ho tranh ba"
+                            android:textColor="#FF0000"
+                            android:textSize="28dp"
+                            android:textStyle="bold" />
+                        <ScrollView
+                            android:id="@+id/scoll_chap"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/tieu_De">
+                            <TextView
+                                android:id="@+id/noidung"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="23dp"
+                                android:layout_marginBottom="60dp"
+                                android:lineHeight="35dp"
+                                android:text="Mặc dù bị bắt gặp khi đang nhảy trên người anh trai mình,\n\n nhưng em ấy lại không lầm bầm chửi rủa\n\n như một người bị bắt gặp khi đang làm việc xấu.\n\n Có lẽ, cô ấy thật sự vui khi thấy \n\nShidou đã thức dậy.
+                            \n\nhsaiasahdjashdjasdhjk"
+                                android:textSize="20dp" />
+                        </ScrollView>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
