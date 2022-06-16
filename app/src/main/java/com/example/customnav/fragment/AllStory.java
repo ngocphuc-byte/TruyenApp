@@ -53,7 +53,6 @@ public class AllStory extends Fragment{
         View v =inflater.inflate(R.layout.fragment_allstory,container,false);
         if(getArguments()!=null){
             String username = getArguments().getString("taikhoan");
-            Toast.makeText(getContext(), username.toString(), Toast.LENGTH_SHORT).show();
         }
         thiscontext = container.getContext();
 

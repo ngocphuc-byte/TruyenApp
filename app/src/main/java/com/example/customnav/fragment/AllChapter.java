@@ -20,10 +20,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.customnav.Adapter.ChapterAdapter;
-import com.example.customnav.Adapter.StoryAdapter;
 import com.example.customnav.R;
 import com.example.customnav.model.Chapter;
-import com.example.customnav.model.Story;
 import com.example.customnav.ultilServer.Server;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -48,7 +46,6 @@ public class AllChapter extends Fragment {
         View v =inflater.inflate(R.layout.fragment_allchapter,container,false);
         if(getArguments()!=null){
             String username = getArguments().getString("taikhoan");
-            Toast.makeText(getContext(), username.toString(), Toast.LENGTH_SHORT).show();
         }
         thiscontext = container.getContext();
 

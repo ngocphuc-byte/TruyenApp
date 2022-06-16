@@ -43,7 +43,6 @@ public class HistoryFragment extends Fragment {
         View v =inflater.inflate(R.layout.fragment_history,container,false);
         if(getArguments()!=null){
             taikhoan = getArguments().getString("taikhoan");
-            Toast.makeText(getContext(), taikhoan, Toast.LENGTH_SHORT).show();
         }
         lichSuList = new ArrayList<>();
         recyclerView = v.findViewById(R.id.history_list);

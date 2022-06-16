@@ -46,7 +46,6 @@ public class CategoryFragment extends Fragment {
         View v= inflater.inflate(R.layout.fragment_category,container,false);
         if(getArguments()!=null){
             String username = getArguments().getString("taikhoan");
-            Toast.makeText(getContext(), username.toString(), Toast.LENGTH_SHORT).show();
         }
         thiscontext = container.getContext();
 

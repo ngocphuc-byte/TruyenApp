@@ -53,7 +53,6 @@ public class FavoriteFragment extends Fragment {
         thiscontext = container.getContext();
         if(getArguments()!=null){
             username = getArguments().getString("taikhoan");
-            Toast.makeText(getContext(), username, Toast.LENGTH_SHORT).show();
         }
         AnhXa(v);
         recyclerView = v.findViewById(R.id.recycleView_Favaorite);

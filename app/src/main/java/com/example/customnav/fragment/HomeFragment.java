@@ -92,7 +92,6 @@ public class HomeFragment extends Fragment {
         View v =inflater.inflate(R.layout.fragment_home,container,false);
         if(getArguments()!=null){
             String username = getArguments().getString("taikhoan");
-            Toast.makeText(getContext(), username, Toast.LENGTH_SHORT).show();
         }
         thiscontext = container.getContext();
 
