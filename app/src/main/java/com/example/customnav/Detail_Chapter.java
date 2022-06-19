@@ -85,7 +85,11 @@ public class Detail_Chapter extends AppCompatActivity {
                         String st = nd.substring(0,1000);
                         if(status == TextToSpeech.SUCCESS){
                             textToSpeech.setLanguage(Locale.ENGLISH);
-                            textToSpeech.speak(st, TextToSpeech.QUEUE_FLUSH, null);
+                            if(textToSpeech.setLanguage(Locale.ENGLISH) ==  TextToSpeech.LANG_NOT_SUPPORTED){
+                                Toast.makeText(getApplicationContext(), "khong ho tro", Toast.LENGTH_SHORT).show();
+                            } else {
+                                textToSpeech.speak(st, TextToSpeech.QUEUE_FLUSH, null);
+                            }
                         } else {
                             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
                         }
