@@ -139,7 +139,6 @@ public class Login extends AppCompatActivity {
 
 
     public void Register(View view) {
-        finish();
         startActivity(new Intent(Login.this, DangKy.class));
     }
 

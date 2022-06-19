@@ -2,7 +2,9 @@ package com.example.customnav;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -35,13 +37,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class Detail_Chapter extends AppCompatActivity {
     Toolbar toolbar;
     SwitchCompat switchCompat;
     int tenchap,idtruyen;
-    String  tieude, ngaycapnhat, noidung, machap, taikhoan;
+    String  tieude, ngaycapnhat, noidung, machap, taikhoan, nd;
     List<ChapterDetail> chapterList;
     DetailChapterAdapter adapter;
     RecyclerView recyclerView;
@@ -50,6 +53,8 @@ public class Detail_Chapter extends AppCompatActivity {
             urInsertLichSu = Server.insertLichSu,
             urlCheckLichSu = Server.checkLichSu,
             urlUpdateLichSu = Server.updateLichSu;
+    TextToSpeech textToSpeech;
+    Button volume;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +76,32 @@ public class Detail_Chapter extends AppCompatActivity {
                 scrollView.fullScroll(View.FOCUS_UP);
             }
         });
+        volume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        String st = nd.substring(0,1000);
+                        if(status == TextToSpeech.SUCCESS){
+                            textToSpeech.setLanguage(Locale.ENGLISH);
+                            textToSpeech.speak(st, TextToSpeech.QUEUE_FLUSH, null);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(textToSpeech != null){
+            textToSpeech.shutdown();
+        }
+    }
 
     void getData(String url){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -86,6 +115,7 @@ public class Detail_Chapter extends AppCompatActivity {
                         int idTruyen = object.getInt("idTruyen");
                         int tenChap = object.getInt("TenChap");
                         if((idtruyen == idTruyen) && (tenChap == tenchap)){
+                            nd = object.getString("NoiDung");
                             chapterList.add(new ChapterDetail(
                                     object.getString("MaChap"),
                                     object.getInt("idTruyen"),
@@ -133,6 +163,7 @@ public class Detail_Chapter extends AppCompatActivity {
     }
 
     private void AnhXa() {
+        volume = findViewById(R.id.volume);
         switchCompat = findViewById(R.id.bt_switch);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
@@ -305,6 +336,8 @@ public class Detail_Chapter extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
     }
+
+
 //
 //    @Override
 //    public boolean onTouch(View view, MotionEvent motionEvent) {

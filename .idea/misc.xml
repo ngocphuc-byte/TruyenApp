@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/.android/Adroid/custom_nav/app/src/main/res/layout/activity_detail_chapter.xml" value="0.2" />
+        <entry key="..\:/.android/Adroid/custom_nav/app/src/main/res/layout/activity_detail_story.xml" value="0.27291666666666664" />
+        <entry key="..\:/.android/Adroid/custom_nav/app/src/main/res/layout/fragment_allstory.xml" value="0.27291666666666664" />
+        <entry key="..\:/.android/Adroid/custom_nav/app/src/main/res/layout/fragment_home.xml" value="0.27291666666666664" />
         <entry key="..\:/.android/custom_nav/app/src/main/res/layout/activity_change_password.xml" value="0.27291666666666664" />
         <entry key="..\:/.android/custom_nav/app/src/main/res/layout/activity_chapter_redirect.xml" value="0.27291666666666664" />
         <entry key="..\:/.android/custom_nav/app/src/main/res/layout/activity_dang_ky_google.xml" value="0.27291666666666664" />
