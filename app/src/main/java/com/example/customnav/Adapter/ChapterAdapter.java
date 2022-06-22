@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,15 +19,18 @@ import com.example.customnav.Interface.ItemClickListener;
 import com.example.customnav.R;
 import com.example.customnav.model.Chapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder>{
+public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder> implements Filterable {
     Fragment context;
     private List<Chapter> chapterlist ;
+    private List<Chapter> newChapterList;
 
     public ChapterAdapter(Fragment context, List<Chapter> chapterlist) {
         this.context = context;
         this.chapterlist = chapterlist;
+        this.newChapterList = chapterlist;
     }
 
     @NonNull
@@ -72,6 +77,37 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
     public int getItemCount() {
         return chapterlist.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String strSearch = constraint.toString();
+                if(strSearch.isEmpty()) {
+                    chapterlist = newChapterList;
+                } else {
+                    List<Chapter> list = new ArrayList<>();
+                    for(Chapter item : newChapterList){
+                        if(item.getNoidung().trim().toLowerCase().contains(strSearch.trim().toLowerCase())){
+                            list.add(item);
+                        }
+                    }
+                    chapterlist = list;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = chapterlist;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                chapterlist = (List<Chapter>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
     public static class ChapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imgTruyen ;
         TextView txtTenChap,txtNgayCapNhat,txtTenTruyen;

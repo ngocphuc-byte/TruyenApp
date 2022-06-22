@@ -163,17 +163,18 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="30dp"
+                    android:layout_width="31dp"
                     android:layout_height="30dp"
                     android:layout_marginRight="40dp"
-                    android:src="@drawable/fb" />
+                    android:src="@drawable/fb"
+                    android:onClick="facebook"/>
 
                 <ImageView
                     android:id="@+id/google"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/google"
-                    android:onClick="Google"/>
+                    android:onClick="Google" />
 
                 <ImageView
                     android:layout_width="30dp"

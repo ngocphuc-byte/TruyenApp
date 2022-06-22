@@ -40,13 +40,6 @@
                 android:layout_height="55dp"
                 android:layout_centerInParent="true"
                 android:src="@drawable/logonhom" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/bt_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp" />
         </RelativeLayout>
 
         </com.google.android.material.appbar.AppBarLayout>

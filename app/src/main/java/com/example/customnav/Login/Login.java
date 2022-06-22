@@ -22,6 +22,14 @@ import com.android.volley.toolbox.Volley;
 import com.example.customnav.MainActivity;
 import com.example.customnav.R;
 import com.example.customnav.ultilServer.Server;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -29,6 +37,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,12 +53,15 @@ public class Login extends AppCompatActivity {
     Button btnDangNhap;
     String taikhoan, matkhau;
     String url = Server.dangnhapKH;
+    CallbackManager callbackManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         AnhXa();
+        loginFB();
 
+//        insertAccountFB();
     }
 
     private void DieuKien(){
@@ -109,6 +124,7 @@ public class Login extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1000){
+            callbackManager.onActivityResult(requestCode, resultCode, data);
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 task.getResult(ApiException.class);
@@ -118,6 +134,11 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(Login.this, e.toString(), Toast.LENGTH_SHORT).show();
             }
         }
+
+
+
+//            super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     private void navigateToSecondActivity() {
@@ -145,4 +166,58 @@ public class Login extends AppCompatActivity {
     public void ForgotPassword(View view) {
         startActivity(new Intent(Login.this, ForgotPassword.class));
     }
+
+    public void facebook(View view) {
+
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+    }
+
+
+    private void loginFB(){
+        callbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        startActivity(new Intent(getApplication(), MainActivity.class));
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }});
+
+    }
+
+    private void insertAccountFB(){
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        GraphRequest request = GraphRequest.newMeRequest(
+                accessToken,
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(
+                            JSONObject object,
+                            GraphResponse response) {
+                        // Application code
+                        try {
+                            String name =  object.getString("name");
+                            Toast.makeText(getApplication(), name, Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,link");
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
+
+
+
 }

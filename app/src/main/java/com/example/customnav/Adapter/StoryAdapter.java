@@ -1,11 +1,11 @@
 package com.example.customnav.Adapter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,24 +16,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.customnav.Detail_Story;
 import com.example.customnav.Interface.ItemClickListener;
-import com.example.customnav.MainActivity;
 import com.example.customnav.R;
-import com.example.customnav.TheloaiDetail;
-import com.example.customnav.fragment.AllStory;
-import com.example.customnav.fragment.HomeFragment;
 import com.example.customnav.model.Story;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryViewHolder> {
-    MainActivity main;
+public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryViewHolder> implements Filterable {
     Fragment context;
     private List<Story> storyList ;
+    private List<Story> newStoryList ;
 
     public StoryAdapter(Fragment context, List<Story> storyList) {
         this.context = context;
         this.storyList = storyList;
+        this.newStoryList = storyList;
     }
 
     @NonNull
@@ -90,6 +87,71 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryViewHol
         return storyList.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String strSearch = constraint.toString();
+                if(strSearch.isEmpty()) {
+                    storyList = newStoryList;
+                } else {
+                    List<Story> list = new ArrayList<>();
+                    for(Story item : newStoryList){
+                        if(item.getTentruyen().trim().toLowerCase().contains(strSearch.trim().toLowerCase())){
+                            list.add(item);
+                        }
+                    }
+                    storyList = list;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = storyList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                storyList = (List<Story>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+
+
+//    private Filter filter = new Filter() {
+//        @Override
+//        protected FilterResults performFiltering(CharSequence constraint) {
+//            List<Story> filterList = new ArrayList<>();
+//            if(constraint != null || constraint.length() == 0){
+//                filterList.addAll(newStoryList);
+//            } else {
+//                String filterPattern = constraint.toString().toLowerCase().trim();
+//                for (Story item : newStoryList
+//                     ) {
+//                    if(item.getTentruyen().toLowerCase().contains(filterPattern)){
+//                        filterList.add(item);
+//                    }
+//                }
+//            }
+//                FilterResults results = new FilterResults();
+//            results.values = filterList;
+//            return  results;
+//        }
+//
+//        @Override
+//        protected void publishResults(CharSequence constraint, FilterResults results) {
+//            storyList.clear();
+//            storyList.addAll((List) results.values);
+//            notifyDataSetChanged();
+//        }
+//    };
+//
+//    @Override
+//    public Filter getFilter() {
+//        return filter;
+//    }
+
     public static class StoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imgTruyen ;
         TextView txtTenTruyen,txtTrangThai,txtSoluongLike,txtSoluongYeuThich,txttacgia;
@@ -116,6 +178,8 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryViewHol
             this.itemClickListener.onItemClick(view, getAdapterPosition());
         }
     }
+
+
 
 
 }

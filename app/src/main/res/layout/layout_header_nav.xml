@@ -17,7 +17,7 @@
         android:id="@+id/name_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lê Nguyễn Trung Hiếu"
+        android:text="Họ và tên"
         android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="@color/white"

@@ -9,4 +9,7 @@
     <string name="nav_Logout">Đăng xuất</string>
     <string name="nav_drawer_open"></string>
     <string name="nav_drawer_close"></string>
+    <string name="facebook_app_id">757862912301449</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
 </resources>
